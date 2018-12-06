@@ -122,7 +122,7 @@ const main = async () => {
 	console.log("##########################################################");
 	console.log("#       Willkommen beim Support++ Gruppen Generator      #");
 	console.log("#                                                        #");
-	console.log("# Version: 1.0                                           #");
+	console.log("# Version: 1.0.0                                         #");
 	console.log("# Author: Elias Bennour                                  #");
 	console.log("# Bei Bugs/Fehlern bitte ein Issue auf Github erstellen. #");
 	console.log("# Github: https://github.com/Support-pp/group-generator  #");
