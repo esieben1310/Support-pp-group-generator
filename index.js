@@ -2,6 +2,7 @@ const TeamspeakQuery = require('teamspeak-query');
 const readline = require('readline');
 var perms = require('./perms.json');
 var sq_host = "localhost";
+var sq_ts_port = 9987
 var sq_port = 10011;
 var sq_username = "serveradmin";
 var sq_pw = "";
@@ -62,6 +63,17 @@ const question4 = () => {
 
 const question5 = () => {
 	return new Promise((resolve, reject) => {
+		rl.question("Wie lautet dein Teamspeak Server Port? (Standard: 9987): ", function(answer) {
+			if(answer != "") {
+				sq_ts_port = answer;
+			}
+			resolve();
+		});
+	});
+}
+
+const question6 = () => {
+	return new Promise((resolve, reject) => {
 		rl.question("Welchen Name soll die neue Gruppe haben? (Standard: Support++): ", function(answer) {
 			if(answer != "") {
 				groupname = answer;
@@ -74,7 +86,9 @@ const question5 = () => {
 const createGroup = (query) => {
 	return new Promise((resolve, reject) => {
 		query.send('login', sq_username, sq_pw)
-		  .then(() => query.send('use', 1))
+		  .then(() => query.send('serveridgetbyport', {'virtualserver_port':sq_ts_port}))
+		  .then(getID)
+		  .then((server_id) => query.send('use', server_id))
 		  .then(() => query.send('clientupdate', {'client_nickname': 'Support++ | Group Generator'}))
 		  .then(() => console.log('Serverquery erfolgreich verbunden.'))
 		  .then(() => query.send('servergroupadd', {'name':groupname}))
@@ -118,6 +132,7 @@ const main = async () => {
 	await question3()
 	await question4()
 	await question5()
+	await question6()
 	const query = new TeamspeakQuery.Raw({host:sq_host,port:sq_port});
 	await createGroup(query);
 	console.log("########################################");
@@ -131,6 +146,7 @@ const main = async () => {
 main();
 
 function saveID(data){ id = data.raw().substring(data.raw().indexOf("=")+1); }
+function getID(data){ return data.raw().substring(data.raw().indexOf("=")+1); }
 
 rl.on('line', (input) => {
 	if(input == "status") console.log("Es wurden " + i + "/" + Object.keys(perms).length + " Rechte gesetzt.");
