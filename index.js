@@ -105,14 +105,14 @@ function end() {
 }
 
 const main = async () => {
-	console.log("###########################################################");
-	console.log("#       Willkommen beim Support++ Gruppen Generator       #");
-	console.log("#                                                         #");
-	console.log("# Version: 1.0                                            #");
-	console.log("# Author: Elias Bennour                                   #");
-	console.log("# Bei Bugs/Fehlern bitte ein Issue auf Github erstellen.  #");
-	console.log("# Github: blablabla                                       #");
-	console.log("###########################################################");
+	console.log("#####################################################################");
+	console.log("#       Willkommen beim Support++ Gruppen Generator                 #");
+	console.log("#                                                                   #");
+	console.log("# Version: 1.0                                                      #");
+	console.log("# Author: Elias Bennour                                             #");
+	console.log("# Bei Bugs/Fehlern bitte ein Issue auf Github erstellen.            #");
+	console.log("# Github: https://github.com/esieben1310/Support-pp-group-generator #");
+	console.log("#####################################################################");
 	await question1()
 	await question2()
 	await question3()
