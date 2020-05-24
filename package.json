@@ -1,6 +1,6 @@
 {
   "name": "spp-group-creator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Creates a Group for Support++ script at Teamspeak",
   "main": "index.js",
   "scripts": {
