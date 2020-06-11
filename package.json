@@ -9,7 +9,7 @@
   "author": "Elias Bennour",
   "license": "ISC",
   "dependencies": {
-    "mocha": "^5.2.0",
+    "mocha": "^8.0.1",
     "teamspeak-query": "^3.1.0"
   }
 }
